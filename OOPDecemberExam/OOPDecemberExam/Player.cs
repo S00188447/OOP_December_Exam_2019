@@ -16,7 +16,6 @@ namespace OOPDecemberExam
     }
     class Player : IComparable<Player>
     {
-
      public string FirstName { get; set; }
      public string SurName { get; set; }
      public Position PreferredPosition { get; set; }
@@ -33,8 +32,6 @@ namespace OOPDecemberExam
             PreferredPosition = newpreferredposition;
             //DOB = newDOB;
             Age = newage;
-
-
         }
 
         public override string ToString()
@@ -49,8 +46,6 @@ namespace OOPDecemberExam
 
             //sorting by age
             //return Age.CompareTo(other.Age);
-
-
         }
 
 
@@ -69,7 +64,5 @@ namespace OOPDecemberExam
 
         //    return age;
         //}
-
-
     }
 }

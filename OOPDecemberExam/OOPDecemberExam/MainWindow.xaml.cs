@@ -27,9 +27,6 @@ namespace OOPDecemberExam
         int spaces = 11;
         public MainWindow()
         {
-
-
-
             InitializeComponent();
         }
 
@@ -135,8 +132,6 @@ namespace OOPDecemberExam
             {
                 ErrorMessage();
             }
-
-
         }
 
         private void RefreshScreen()
@@ -147,8 +142,7 @@ namespace OOPDecemberExam
 
             //same as above but with a different list box, this is to prevent overlapping
             LBXselectedPlayers.ItemsSource = null;
-            LBXselectedPlayers.ItemsSource = selectedPlayers;
-            
+            LBXselectedPlayers.ItemsSource = selectedPlayers;         
         }
 
         private void ErrorMessage()
@@ -157,7 +151,6 @@ namespace OOPDecemberExam
             //Creating an error message and giving the text block it's value (if the if statement is true)
             string errorMessage = "ERROR: You didn't select a player";
             TBLspaces.Text = errorMessage;
-
         }
     }
 }
