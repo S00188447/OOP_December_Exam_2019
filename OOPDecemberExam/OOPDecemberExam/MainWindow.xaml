@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOPDecemberExam"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Button x:Name="BTNadd" Content="Add &gt;&gt;" HorizontalAlignment="Left" Margin="377,167,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="BTNremove" Content="&lt;&lt; Remove" HorizontalAlignment="Left" Margin="377,251,0,0" VerticalAlignment="Top" Width="75"/>
-        <ListBox HorizontalAlignment="Left" Height="207" Margin="204,120,0,0" VerticalAlignment="Top" Width="95"/>
-        <ListBox HorizontalAlignment="Left" Height="207" Margin="516,120,0,0" VerticalAlignment="Top" Width="95"/>
+        <ListBox x:Name="LBXallPlayers" HorizontalAlignment="Left" Height="207" Margin="204,120,0,0" VerticalAlignment="Top" Width="95"/>
+        <ListBox x:Name="LBXselectedPlayers" HorizontalAlignment="Left" Height="207" Margin="516,120,0,0" VerticalAlignment="Top" Width="95"/>
         <Label Content="All Players" HorizontalAlignment="Left" Height="25" Margin="204,90,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Selected Players" HorizontalAlignment="Left" Height="24" Margin="516,82,0,0" VerticalAlignment="Top" Width="95"/>
         <Label Content="Spaces" HorizontalAlignment="Left" Height="29" Margin="516,346,0,0" VerticalAlignment="Top" Width="48"/>

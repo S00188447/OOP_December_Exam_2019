@@ -23,15 +23,37 @@ namespace OOPDecemberExam
      public DateTime DOB { get; set; }
      public int Age { get; set; }
 
-        public Player(string newfirstname, string newsurname, Position newpreferredposition, DateTime newDOB, int newage)
+     static Random ran = new Random();
+
+        public Player(string newfirstname, string newsurname, Position newpreferredposition)
         {
 
             FirstName = newfirstname;
             SurName = newsurname;
             PreferredPosition = newpreferredposition;
-            DOB = newDOB;
-            Age = newage;
+            //DOB = newDOB;
+            //Age = newage;
+
 
         }
+
+
+
+        //private Random gen = new Random();
+        //DateTime RandomDay(string newdob)
+        //{
+        //    DateTime minagevalue = new DateTime(1900, 1, 1);
+        //    int range = (DateTime.Today - minagevalue).Days;
+        //    minagevalue.AddDays(gen.Next(range));
+
+        //    int age = 0;
+        //    age = DateTime.Now.Year - minagevalue.Year;
+        //    if (DateTime.Now.DayOfYear < minagevalue.DayOfYear)
+        //        age = age - 1;
+
+        //    return age;
+        //}
+
+
     }
 }
