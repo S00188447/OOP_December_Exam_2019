@@ -22,8 +22,13 @@ namespace OOPDecemberExam
     {
         //Creating lists
         List<Player> players = new List<Player>();
+        List<Player> selectedPlayers = new List<Player>();
+        List<Player> filteredPlayers = new List<Player>();
+        int spaces = 11;
         public MainWindow()
         {
+
+
 
             InitializeComponent();
         }
@@ -31,28 +36,24 @@ namespace OOPDecemberExam
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            Player P1 = new Player("Jason", "Jordan", Position.Goalkeeper);
-            Player P2 = new Player("Micael", "Burke", Position.Goalkeeper);
-            Player P3 = new Player("Joe", "Gacquin", Position.Defender);
-            Player P4 = new Player("Tim", "Fahy", Position.Defender);
-            Player P5 = new Player("Tom", "Ruane", Position.Defender);
-            Player P6 = new Player("Mary", "Coppinger", Position.Defender);
-            Player P7 = new Player("John", "Burke", Position.Defender);
-            Player P8 = new Player("David", "Fahy", Position.Defender);
-            Player P9 = new Player("Jason", "Donnell", Position.Midfielder);
-            Player P10 = new Player("Shauna", "Feeney", Position.Midfielder);
-            Player P11 = new Player("Tomas", "Dally", Position.Midfielder);
-            Player P12 = new Player("Rian", "Fahy", Position.Midfielder);
-            Player P13 = new Player("Jonathan", "Que", Position.Midfielder);
-            Player P14 = new Player("Shawn", "Carrols", Position.Midfielder);
-            Player P15 = new Player("Sean", "Griffin", Position.Forward);
-            Player P16 = new Player("Peter", "Rabbit", Position.Forward);
-            Player P17 = new Player("Alex", "Cumber", Position.Forward);
-            Player P18 = new Player("Timmy", "Tomato", Position.Forward);
-
-
-
-
+            Player P1 = new Player("Jason", "Jordan", Position.Goalkeeper, 22);
+            Player P2 = new Player("Micael", "Burke", Position.Goalkeeper, 21);
+            Player P3 = new Player("Joe", "Gacquin", Position.Defender, 23);
+            Player P4 = new Player("Tim", "Fahy", Position.Defender, 30);
+            Player P5 = new Player("Tom", "Ruane", Position.Defender, 23);
+            Player P6 = new Player("Mary", "Coppinger", Position.Defender, 27);
+            Player P7 = new Player("John", "Burke", Position.Defender, 28);
+            Player P8 = new Player("David", "Fahy", Position.Defender, 29);
+            Player P9 = new Player("Jason", "Donnell", Position.Midfielder, 28);
+            Player P10 = new Player("Shauna", "Feeney", Position.Midfielder, 22);
+            Player P11 = new Player("Tomas", "Dally", Position.Midfielder, 21);
+            Player P12 = new Player("Rian", "Fahy", Position.Midfielder, 23);
+            Player P13 = new Player("Jonathan", "Que", Position.Midfielder, 24);
+            Player P14 = new Player("Shawn", "Carrols", Position.Midfielder, 24);
+            Player P15 = new Player("Sean", "Griffin", Position.Forward, 24);
+            Player P16 = new Player("Peter", "Rabbit", Position.Forward, 22);
+            Player P17 = new Player("Alex", "Cumber", Position.Forward, 20);
+            Player P18 = new Player("Timmy", "Tomato", Position.Forward,21);
 
             //add to list
             players.Add(P1);
@@ -74,9 +75,88 @@ namespace OOPDecemberExam
             players.Add(P17);
             players.Add(P18);
 
-
             //display in listbox
-            LBXallPlayers.ItemsSource = players; //tell listbox that the source of items is the list activitie
+            LBXallPlayers.ItemsSource = players; //tell listbox that the source of items is the list players
+
+            //sorting by players first name
+            players.Sort();
+
+        }
+
+        private void BTNadd_Click(object sender, RoutedEventArgs e)
+        {
+            //figure out what item is selected
+            Player selectedCourse = LBXallPlayers.SelectedItem as Player;
+            //if selected activity is not null executes code
+            if (selectedCourse != null)
+            {
+                //move a player from left to right
+                players.Remove(selectedCourse);
+                selectedPlayers.Add(selectedCourse);
+
+                //If a player is added the amount of space is deceeased
+                spaces--;
+                TBLspaces.Text = spaces.ToString();
+
+                //method to refresh screen
+                RefreshScreen();
+            }
+            //if nothing is selected error message displays
+            else
+            {
+                ErrorMessage();
+            }
+
+        }
+
+        private void BTNremove_Click(object sender, RoutedEventArgs e)
+        {
+            //figure out what item is selected
+            Player selectedPlayer = LBXselectedPlayers.SelectedItem as Player;
+            //null check
+            if (selectedPlayer != null)
+            {
+                //move a player from right to left
+                players.Add(selectedPlayer);
+                selectedPlayers.Remove(selectedPlayer);
+
+
+                //If a player is removed the amount of space is increased
+                spaces++;
+                TBLspaces.Text = spaces.ToString();
+
+                //method to refresh screen
+                RefreshScreen();
+
+
+            }
+            //if nothing is selected error message displays
+            else
+            {
+                ErrorMessage();
+            }
+
+
+        }
+
+        private void RefreshScreen()
+        {
+            //Makes list box null and then fills it with activities again,
+            LBXallPlayers.ItemsSource = null;
+            LBXallPlayers.ItemsSource = players;
+
+            //same as above but with a different list box, this is to prevent overlapping
+            LBXselectedPlayers.ItemsSource = null;
+            LBXselectedPlayers.ItemsSource = selectedPlayers;
+            
+        }
+
+        private void ErrorMessage()
+        {
+            //if nothing is selected an error message will display
+            //Creating an error message and giving the text block it's value (if the if statement is true)
+            string errorMessage = "ERROR: You didn't select a player";
+            TBLspaces.Text = errorMessage;
 
         }
     }

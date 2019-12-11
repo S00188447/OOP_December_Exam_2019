@@ -14,7 +14,7 @@ namespace OOPDecemberExam
         Midfielder,
         Forward
     }
-    class Player
+    class Player : IComparable<Player>
     {
 
      public string FirstName { get; set; }
@@ -25,20 +25,36 @@ namespace OOPDecemberExam
 
      static Random ran = new Random();
 
-        public Player(string newfirstname, string newsurname, Position newpreferredposition)
+        public Player(string newfirstname, string newsurname, Position newpreferredposition, int newage)
         {
 
             FirstName = newfirstname;
             SurName = newsurname;
             PreferredPosition = newpreferredposition;
             //DOB = newDOB;
-            //Age = newage;
+            Age = newage;
+
+
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1} , {2}", FirstName, SurName, Age);
+        }
+
+        public int CompareTo(Player other)
+        {
+            //sorting by first name
+            return FirstName.CompareTo(other.FirstName);
+
+            //sorting by age
+            //return Age.CompareTo(other.Age);
 
 
         }
 
 
-
+        //failed attempt to get random age and dob
         //private Random gen = new Random();
         //DateTime RandomDay(string newdob)
         //{
